@@ -9,7 +9,7 @@ Registered users create a group and talk
 
 
 # Information stored in db
-## user table
+## users table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -17,17 +17,17 @@ Registered users create a group and talk
 |password|string|null: false, input minlength = 8 : true|
 ### Association
 - has_many :messages
-- has_many :user_groups
-- has_many :groups,  through:  :user_group
+- has_many :users_groups
+- has_many :groups,  through:  :users_groups
 
-## group table
+## groups table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 ### Association
 - has_many :messages
-- has_many :user_groups
-- has_many :users,  through:  :user_group
+- has_many :users_groups
+- has_many :users,  through:  :users_groups
 
 ## message table
 |Column|Type|Options|
@@ -37,7 +37,7 @@ Registered users create a group and talk
 - belongs_to :user
 - belongs_to :group
 
-## user_group table
+## users_groups table
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
