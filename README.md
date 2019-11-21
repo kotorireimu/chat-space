@@ -24,7 +24,6 @@ Registered users create a group and talk
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|integer|null: false,foreign_key: true|
 ### Association
 - has_many :messages
 - has_many :user_groups
