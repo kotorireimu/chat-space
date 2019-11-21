@@ -4,11 +4,11 @@
 app name
 chat-space
 
-# Overview
+## Overview
 Registered users create a group and talk
 
 
-Information stored in db
+# Information stored in db
 ## user table
 |Column|Type|Options|
 |------|----|-------|
