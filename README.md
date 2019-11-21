@@ -32,7 +32,7 @@ Registered users create a group and talk
 ## messages table
 |Column|Type|Options|
 |------|----|-------|
-|message|string|null: false|
+|message|string||
 |image|text||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
