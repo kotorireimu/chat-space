@@ -1,24 +1,50 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# index
+## app name
+chat-space
 
-Things you may want to cover:
+## Overview
+Registered users create a group and talk
 
-* Ruby version
 
-* System dependencies
+# Information stored in db
+## users table
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false, match(/.+@.+/): true|
+|password|string|null: false, input minlength = 8 : true|
+### Association
+- has_many :messages
+- has_many :users_groups
+- has_many :groups,  through:  :users_groups
 
-* Configuration
+## groups table
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :messages
+- has_many :users_groups
+- has_many :users,  through:  :users_groups
 
-* Database creation
+## messages table
+|Column|Type|Options|
+|------|----|-------|
+|message|string||
+|image|text||
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :group
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## users_groups table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :group
