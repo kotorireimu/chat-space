@@ -12,22 +12,22 @@ Registered users create a group and talk
 ## user table
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null: false|
+|name|string|null: false|
 |email|string|null: false, match(/.+@.+/): true|
 |password|string|null: false, input minlength = 8 : true|
 ### Association
 - has_many :messages
-- has_many :user_group
+- has_many :user_groups
 - has_many :groups,  through:  :user_group
 
 ## group table
 |Column|Type|Options|
 |------|----|-------|
-|groupname|string|null: false|
+|name|string|null: false|
 |user_id|integer|null: false,foreign_key: true|
 ### Association
 - has_many :messages
-- has_many :user_group
+- has_many :user_groups
 - has_many :users,  through:  :user_group
 
 ## message table
