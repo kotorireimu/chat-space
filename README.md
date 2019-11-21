@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# index
+app name
+chat-space
 
-Things you may want to cover:
+Overview
+Registered users create a group and talk
 
-* Ruby version
 
-* System dependencies
+Information stored in db
+user table
+|Column|Type|Options|
+|------|----|-------|
+|username|string|null: false|
+|email|string|null: false, match(/.+@.+/): true|
+|password|string|null: false, input minlength = 8 : true|
+## Association
+- has_many :messages
+- has_many :user_group
+- has_many :groups,  through:  :user_group
 
-* Configuration
+group table
+|Column|Type|Options|
+|------|----|-------|
+|groupname|string|null: false|
+|user_id|integer|null: false,foreign_key: true|
+## Association
+- has_many :messages
+- has_many :user_group
+- has_many :users,  through:  :user_group
 
-* Database creation
+message table
+|Column|Type|Options|
+|------|----|-------|
+|message|string|null: false|
+## Association
+- belongs_to :user
+- belongs_to :group
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+user_group table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+## Association
+- belongs_to :user
+- belongs_to :group
