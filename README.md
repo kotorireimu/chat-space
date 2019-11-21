@@ -29,7 +29,7 @@ Registered users create a group and talk
 - has_many :users_groups
 - has_many :users,  through:  :users_groups
 
-## message table
+## messages table
 |Column|Type|Options|
 |------|----|-------|
 |message|string|null: false|
