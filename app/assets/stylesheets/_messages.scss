@@ -2,6 +2,8 @@
   display: flex;
 }
 
+$side-chat-font-color: #FFFFFF;
+
 .side-chat{
   height: 100%;
   width: 300px;
@@ -12,14 +14,14 @@
     &__box{
       padding-top: 35px;
       font-size: 16px;
-      color: #FFFFFF;
+      color: $side-chat-font-color;
       display: flex; justify-content: space-between;
       &__name{  
         font-weight: bold;
       }
       &__menu{
         display: flex;
-        a:visited { color:#FFFFFF; text-decoration:none }
+        a:visited { color: $side-chat-font-color; text-decoration:none }
       }
     }
   }
@@ -31,7 +33,7 @@
     &__group{
       padding: 20px 0;
       height: 31px;
-      color: #FFFFFF;
+      color: $side-chat-font-color;
       font-weight: bold;
       &__name{
         font-size: 15px;
@@ -43,6 +45,8 @@
     }
   }
 }
+
+$main-chat-btn-color: #38AEF0;
 
 .main-chat{
   height: 100%;
@@ -66,12 +70,12 @@
         }
       }
       &__edit{
-        color: cornflowerblue;
+        color: $main-chat-btn-color;
         height: 40px;
         line-height: 40px;
         padding: 0 20px;
         margin-top: 28px;
-        border: solid 1px cornflowerblue;
+        border: solid 1px $main-chat-btn-color;
       }
     }
   }
@@ -135,7 +139,7 @@
         margin-left: 15px;
         padding: 0 30px;
         color: white;
-        background-color: #38AEF0;
+        background-color: $main-chat-btn-color;
       }
     }
   }
