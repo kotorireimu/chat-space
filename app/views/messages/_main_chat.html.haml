@@ -27,8 +27,7 @@
     .main-chat__footer__text
       .main-chat__footer__text__message
         %input.main-chat__footer__text__message__input{:placeholder => "message"}
-        .main-chat__footer__text__message__img
-          = link_to "#", class: "main-chat__footer__text__img__btn" do
-            <i class="far fa-image"></i>
-      .main-chat__footer__text__btn
-        Send
+        %label.main-chat__footer__text__message__img
+          <i class="far fa-image"></i>
+          %input.main-chat__footer__text__message__img__file{type:"file"}
+      %input.main-chat__footer__text__btn{:type => "submit" ,:value => "Send"}
