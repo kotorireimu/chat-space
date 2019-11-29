@@ -5,7 +5,7 @@
         = current_user.name
       %ul.side-chat__header__box__menu
         %li.side-chat__header__box__menu__new-group
-          = link_to "#", class: "side-chat__header__box__menu__new-group__btn" do
+          = link_to new_group_path, class: "side-chat__header__box__menu__new-group__btn" do
             %i.far.fa-edit
             %span<>
         %li.side-chat__header__box__menu__setting
@@ -13,8 +13,10 @@
             %i.fas.fa-cog
             %span<>
   .side-chat__contents
-    .side-chat__contents__group
-      .side-chat__contents__group__name
-        group
-      .side-chat__contents__group__message
-        text
+    - current_user.groups.each do |group|
+      .side-chat__contents__group
+        = link_to "#" do
+          .side-chat__contents__group__name
+            = group.name
+          .side-chat__contents__group__message
+            text
