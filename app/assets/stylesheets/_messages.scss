@@ -7,6 +7,9 @@ $side-chat-font-color: #FFFFFF;
 .side-chat{
   height: 100%;
   width: 300px;
+  a:link { color: $side-chat-font-color; text-decoration:none }
+  a:visited { color: $side-chat-font-color; text-decoration:none }
+  a {text-decoration:none;}
   &__header{
     height: 100px;
     padding: 0 20px;
@@ -21,7 +24,6 @@ $side-chat-font-color: #FFFFFF;
       }
       &__menu{
         display: flex;
-        a:visited { color: $side-chat-font-color; text-decoration:none }
       }
     }
   }
@@ -70,12 +72,12 @@ $main-chat-btn-color: #38AEF0;
         }
       }
       &__edit{
-        color: $main-chat-btn-color;
         height: 40px;
         line-height: 40px;
         padding: 0 20px;
         margin-top: 28px;
         border: solid 1px $main-chat-btn-color;
+        color: $main-chat-btn-color;
       }
     }
   }
