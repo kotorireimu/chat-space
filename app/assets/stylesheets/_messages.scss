@@ -53,6 +53,7 @@ $main-chat-btn-color: #38AEF0;
 .main-chat{
   height: 100%;
   width: calc(100vw - 300px);
+  a {text-decoration:none;}
   &__header{
     height: 99px;
     padding: 0 40px;

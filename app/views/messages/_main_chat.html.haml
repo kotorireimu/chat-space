@@ -4,29 +4,34 @@
       .main-chat__header__box__group
         .main-chat__header__box__group__name
           %p
-            name
+            = @group.name
         
         .main-chat__header__box__group__member
           %p
             Member:name
-        
+      = link_to "Edit" ,edit_group_path(@group) ,class: "main-chat__header__box__edit"
 
   .main-chat__contents
-    .main-chat__contents__group
-      .main-chat__contents__group__name-time
-        .main-chat__contents__group__name-time__name
-          %p
-            group
-        .main-chat__contents__group__name-time__time
-          %p
-            time
-      .main-chat__contents__group__message
-        text
+    - @messages.each do |message|
+      .main-chat__contents__group
+        .main-chat__contents__group__name-time
+          .main-chat__contents__group__name-time__name
+            %p
+              = message.user.name
+          .main-chat__contents__group__name-time__time
+            %p
+              = message.created_at.strftime("%Y/%m/%d %H:%M")
+        .main-chat__contents__group__message
+          - if message.content.present?
+            %p= message.content
+          = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
   .main-chat__footer
-    .main-chat__footer__text
-      .main-chat__footer__text__message
-        %input.main-chat__footer__text__message__input{placeholder: "message"}
-        %label.main-chat__footer__text__message__img
-          %i.far.fa-image
-          %input.main-chat__footer__text__message__img__file{type:"file"}
-      %input.main-chat__footer__text__btn{type: "submit" ,value: "Send" }
+    = form_for [@group, @message] do |f|
+      .main-chat__footer__text
+        .main-chat__footer__text__message
+          = f.text_field :content, class: 'main-chat__footer__text__message__input', placeholder: 'message'
+          = f.label :image, class: 'main-chat__footer__text__message__img' do
+            %i.far.fa-image
+            = f.file_field :image, class: 'main-chat__footer__text__message__img__file'
+        = f.submit 'Send', class: 'main-chat__footer__text__btn'
+
