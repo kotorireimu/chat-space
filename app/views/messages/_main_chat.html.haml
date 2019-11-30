@@ -6,9 +6,11 @@
           %p
             = @group.name
         
-        .main-chat__header__box__group__member
-          %p
-            Member:name
+        %ul.main-chat__header__box__group__member
+          Member :
+          %li.main-chat__header__box__group__member_name
+            - @group.group_users.each do |group_user|
+              = group_user.user.name
       = link_to "Edit" ,edit_group_path(@group) ,class: "main-chat__header__box__edit"
 
   .main-chat__contents
