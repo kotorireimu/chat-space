@@ -94,7 +94,7 @@ $(function(){
       $('.main-chat__contents').animate({ scrollTop: $('.main-chat__contents')[0].scrollHeight});
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
     });
   };
 
