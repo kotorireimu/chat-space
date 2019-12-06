@@ -3,7 +3,7 @@ $(function(){
   function buildHTML(message){
     // 「もしメッセージに画像が含まれていたら」という条件式
     if (message.image) {
-      var html = `<div class="main-chat__contents__group">
+      var html = `<div class="main-chat__contents__group" data-message-id = ${message.id}>
                     <div class="main-chat__contents__group__name-time">
                       <div class="main-chat__contents__group__name-time__name">
                         <p>
@@ -24,7 +24,7 @@ $(function(){
                     </div>
                   </div>`//メッセージに画像が含まれる場合のHTMLを作る
     } else {
-      var html = `<div class="main-chat__contents__group">
+      var html = `<div class="main-chat__contents__group" data-message-id = ${message.id}>
                     <div class="main-chat__contents__group__name-time">
                       <div class="main-chat__contents__group__name-time__name">
                         <p>
@@ -70,4 +70,36 @@ $(function(){
       alert("メッセージ送信に失敗しました");
     });
   });
+
+  var reloadMessages = function() {
+    last_message_id = $(".main-chat__contents__group:last").data("message-id");
+    //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
+    $.ajax({
+      //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
+      url: "api/messages",
+      //ルーティングで設定した通りhttpメソッドをgetに指定
+      type: 'get',
+      dataType: 'json',
+      //dataオプションでリクエストに値を含める
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      //メッセージが入ったHTMLに、入れ物ごと追加
+      $('.main-chat__contents').append(insertHTML);
+      $('.main-chat__contents').animate({ scrollTop: $('.main-chat__contents')[0].scrollHeight});
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+
+  if($('.main-chat__contents')[0]){
+    setInterval(reloadMessages, 7000);
+  }
+
 });

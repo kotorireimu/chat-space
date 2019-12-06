@@ -15,7 +15,7 @@
 
   .main-chat__contents
     - @messages.each do |message|
-      .main-chat__contents__group
+      .main-chat__contents__group{data: {message:{id:"#{message.id}"}}}
         .main-chat__contents__group__name-time
           .main-chat__contents__group__name-time__name
             %p
