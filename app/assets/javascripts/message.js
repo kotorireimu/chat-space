@@ -68,6 +68,7 @@ $(function(){
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
+      $('.main-chat__footer__text__btn').prop('disabled', false);
     });
   });
 
